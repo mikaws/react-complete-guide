@@ -1,3 +1,3 @@
 ﻿# React Complete Guide
 
-Projects carried out with the React - The Complete Guide (incl Hooks, React Router, Redux)
+These are my projects and studies carried out during the course React - The Complete Guide (incl Hooks, React Router, Redux) by Maximilian Schwarzmüller
