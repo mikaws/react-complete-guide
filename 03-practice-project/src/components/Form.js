@@ -1,6 +1,6 @@
-import "./InputText.css"
+import "./Input.css"
 import "./Form.css"
-import InputText from "./InputText"
+import Input from "./Input"
 import Button from "./Button"
 import { useEffect, useState } from "react"
 
@@ -23,14 +23,16 @@ export default function Form(props) {
     }, [clear]);
 
     return(
-        <div className="form">
-            <InputText
+        <form className="form">
+            <Input
                 title="Username"
+                type="text"
                 onChange={onKeyUsername}
                 onButtonClicked={clear}
             />
-            <InputText
+            <Input
                 title="Age (Years)"
+                type="number"
                 onChange={onKeyAge}
                 onButtonClicked={clear}
             />
@@ -38,6 +40,6 @@ export default function Form(props) {
                 content="Add User"
                 onClick={() => onFormSubmit((data.username && data.age) ? data : '')}
             />
-        </div>
+        </form>
     )
 }

@@ -1,6 +1,7 @@
 import Card from "./components/UI/Card";
 import Form from "./components/Form";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import './App.css'
 
 export default function App() {
   const [users, setUsers] = useState([]);
@@ -15,10 +16,11 @@ export default function App() {
   }
 
   function filterUser(user) {
-    users.splice(user, 1)
+    let temp = [...users]
+    temp.splice(user, 1)
+    setUsers(temp)
   }
 
-  useEffect(() => {}, [users])
   
   return (
     <>
@@ -30,13 +32,13 @@ export default function App() {
         <Card>
           {users.map((user, i) => {
             return(
-              <div
+              <ul
                 className="user-content"
                 style={styles}
                 key={i}
                 onClick={() => filterUser(i)}>
-                {`${user.username} (${user.age} years old)`}
-              </div>
+                <li>{`${user.username} (${user.age} years old)`}</li>
+              </ul>
             )
           })}
         </Card>

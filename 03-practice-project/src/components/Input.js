@@ -1,5 +1,5 @@
 import { useState } from "react"
-import "./InputText.css"
+import "./Input.css"
 
 export default function InputText(props) {
     const [value, setValue] = useState('')
@@ -16,7 +16,16 @@ export default function InputText(props) {
             <label>
                 {props.title}
             </label>
-            <input type="text" value={value} onChange={e => onKeyDown(e.target.value)}/>
+            <input
+                type="text"
+                value={value}
+                onChange={e => {
+                    if(props.type === 'number')
+                        onKeyDown(e.target.value.replace(/\D/g, ''))
+                    else if(props.type === 'text')
+                        onKeyDown(e.target.value.replace(/\d/g, ''))
+                }}
+            />
         </div>
     )
 }
