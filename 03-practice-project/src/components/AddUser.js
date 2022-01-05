@@ -1,5 +1,6 @@
 import { useState } from "react"
 import './AddUser.css'
+import '../index.css'
 
 export default function AddUser(props) {
     
@@ -8,6 +9,10 @@ export default function AddUser(props) {
     
     function onFormSubmit(e) {
         e.preventDefault()
+        if(username.trim().length === 0 || age.trim().length === 0)
+            return props.onClickButton('Empty values')
+        else if(parseInt(age) < 1)
+            return props.onClickButton('Age must be grower than 0')
         props.onClickButton({username, age})
         setUsername('')
         setAge('')

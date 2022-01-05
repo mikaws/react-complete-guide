@@ -2,14 +2,19 @@ import Card from "./components/UI/Card";
 import AddUser from "./components/AddUser";
 import React, { useState } from "react";
 import './App.css'
+import ErrorModal from "./components/ErrorModal";
 
 export default function App() {
   const [users, setUsers] = useState([]);
+  const [invalidInput, setInvalidInput] = useState('')
   const styles = {border: '1px solid #ccc', margin: 10, padding: 10}
 
   function formDataHandler(data) {
     if(data) {
-      setUsers([...users, data])
+      if(data === 'Empty values' || data === 'Age must be grower than 0')
+        setInvalidInput(data)
+      else
+        setUsers([...users, data])
     }
   }
 
@@ -21,11 +26,17 @@ export default function App() {
   
   return (
     <>
+      {invalidInput &&
+        <ErrorModal
+          clickHandler={() => setInvalidInput('')}
+          message={invalidInput}
+        />
+      }
       <Card>
         <AddUser onClickButton={formDataHandler}/>
       </Card>
 
-      {users ?
+      {users &&
         <Card>
           {users.map((user, i) => {
             return(
@@ -39,8 +50,9 @@ export default function App() {
             )
           })}
         </Card>
-        : ''
       }
+
+      
     </>
   );
 }
