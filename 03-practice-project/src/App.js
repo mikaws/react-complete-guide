@@ -1,13 +1,11 @@
 import Card from "./components/UI/Card";
-import Form from "./components/Form";
+import AddUser from "./components/AddUser";
 import React, { useState } from "react";
 import './App.css'
 
 export default function App() {
   const [users, setUsers] = useState([]);
   const styles = {border: '1px solid #ccc', margin: 10, padding: 10}
-
-
 
   function formDataHandler(data) {
     if(data) {
@@ -20,12 +18,11 @@ export default function App() {
     temp.splice(user, 1)
     setUsers(temp)
   }
-
   
   return (
     <>
       <Card>
-        <Form onClickButton={formDataHandler}/>
+        <AddUser onClickButton={formDataHandler}/>
       </Card>
 
       {users ?

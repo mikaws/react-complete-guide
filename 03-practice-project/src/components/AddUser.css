@@ -1,15 +1,24 @@
-
-.form {
+.add-user-form {
     padding: 20px;
     display: flex;
     flex-direction: column;
 }
 
-.form button {
+.add-user-form button {
     font-weight: bold;
     width: 30%;
     margin-top: 10px;
     padding: 5px;
+}
+
+label {
+    float: left;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"] {
+    margin-bottom: 10px;
 }
 
 @media screen and (max-width: 1000px) {
