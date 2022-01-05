@@ -1,7 +1,10 @@
 export default function Button(props) {
-    function onFormSubmit() { props.onClick() }
+    function onFormSubmit(e) {
+        e.preventDefault()
+        props.onClick()
+    }
 
     return(
-        <button onClick={onFormSubmit}>{props.content}</button>
+        <button type="submit" onClick={(e) => onFormSubmit(e)}>{props.content}</button>
     )
 }
